@@ -1,0 +1,1 @@
+gdaltindex -f GPKG -t_srs EPSG:21781 ortho2012_idx.gpkg *.tif
