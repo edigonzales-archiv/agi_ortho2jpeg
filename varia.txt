@@ -1,1 +1,5 @@
 gdaltindex -f GPKG -t_srs EPSG:21781 ortho2012_idx.gpkg *.tif
+
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2014/rgb/12_5cm/
+./raster2jpeg.sh /ch/so/agi/orthofoto/2014/cir/12_5cm/
