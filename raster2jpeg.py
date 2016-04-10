@@ -54,14 +54,47 @@ for feature in layer:
 
 
     src_ds = gdal.Open(infile)
-    dst_ds = gdal.Translate(outfile, src_ds, creationOptions = ['COMPRESS=JPEG', 'TILED=YES', 'PHOTOMETRIC=YCBCR', 'PROFILE=GeoTIFF'])
+    # 2011 - 2015
+    #dst_ds = gdal.Translate(outfile, src_ds, creationOptions = ['COMPRESS=JPEG', 'TILED=YES', 'PHOTOMETRIC=YCBCR', 'PROFILE=GeoTIFF'])
+    
+    # 2006 - 2007
+    # These images had an alpha channel before which was introduced by me some time ago. 
+    # I think the originales ones don't have one. -> Processing could be different.
+    #
+    # 2002 
+    # Outside is black. It neens further investigations: solve it on the application side (wms server) or try to "fix" image (e.g. nearblack etc. etc.)
+    # and:
+    # Basisplan.
+    # Outside is black too. Change of production process.
+    dst_ds = gdal.Translate(outfile, src_ds, bandList = [1,2,3], creationOptions = ['COMPRESS=JPEG', 'TILED=YES', 'PHOTOMETRIC=YCBCR', 'PROFILE=GeoTIFF'])
+
+    # 1993 
+    # Outside is black. It neens further investigations: solve it on the application side (wms server) or try to "fix" image (e.g. nearblack etc. etc.)
+    # and:
+    # DTM/DOM 2014 relief
+    # DTM/DOM 2002 relief
+    #dst_ds = gdal.Translate(outfile, src_ds, bandList = [1], creationOptions = ['COMPRESS=JPEG', 'TILED=YES', 'PROFILE=GeoTIFF'])
+
+    # DTM/DOM 2014 grid
+    #dst_ds = gdal.Translate(outfile, src_ds, creationOptions = ['COMPRESS=DEFLATE', 'PREDICTOR=2', 'TILED=YES', 'PROFILE=GeoTIFF'])
+
     dst_ds = None
 
     cmd = GDAL_PATH + "/gdal_edit.py -unsetmd " + outfile
     os.system(cmd)
 
-    cmd = GDAL_PATH + "/gdaladdo -r cubic --config COMPRESS_OVERVIEW JPEG"
+    # mmmh, acutally I wanted -r average...
+    cmd = GDAL_PATH + "/gdaladdo -r cubic "
+    
+    
+    cmd += " --config COMPRESS_OVERVIEW JPEG"
+    
+    # only for 3 band rgb
+    # disable for 1993
     cmd += " --config PHOTOMETRIC_OVERVIEW YCBCR"
-    cmd += " --config INTERLEAVE_OVERVIEW PIXEL " + outfile 
+    
+    cmd += " --config INTERLEAVE_OVERVIEW PIXEL "
+    
+    cmd += " " + outfile 
     cmd += " 2 4 8 16 32 64 128"
     os.system(cmd)

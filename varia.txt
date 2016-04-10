@@ -1,5 +1,51 @@
 gdaltindex -f GPKG -t_srs EPSG:21781 ortho2012_idx.gpkg *.tif
 
 
+Ortho 2013 is missing!
+DTM Relief 2002 is missing!
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2015/rgb/12_5cm/
+./raster2jpeg.sh /ch/so/agi/orthofoto/2015/cir/12_5cm/
+
 ./raster2jpeg.sh /ch/so/agi/orthofoto/2014/rgb/12_5cm/
 ./raster2jpeg.sh /ch/so/agi/orthofoto/2014/cir/12_5cm/
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2012/rgb/12_5cm/
+./raster2jpeg.sh /ch/so/agi/orthofoto/2012/cir/12_5cm/
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2011/rgb/12_5cm/
+./raster2jpeg.sh /ch/so/agi/orthofoto/2011/cir/12_5cm/
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2007/rgb/12_5cm/
+./raster2jpeg.sh /ch/so/agi/orthofoto/2006/rgb/12_5cm/
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/2002/rgb/50cm/
+
+./raster2jpeg.sh /ch/so/agi/orthofoto/1993/sw/70cm/
+
+
+DTM/DOM Gradientenbilder sind keine "Bilder". Man könnte sie mit PyQGIs in ein Bild rendern.
+Reduktion auf circa 1/3. (15MB -> 5MB). Keine Verbesserung mit DEFLATE und PREDICTOR=2.
+Copy/Paste...
+
+./raster2jpeg.sh  /ch/so/agi/hoehen/2014/dtm/relief/50cm/
+./raster2jpeg.sh  /ch/so/agi/hoehen/2014/dom/relief/50cm/
+
+./raster2jpeg.sh  /ch/so/agi/hoehen/2014/dtm/grid/50cm/
+./raster2jpeg.sh  /ch/so/agi/hoehen/2014/dom/grid/50cm/
+
+NDSM auch nicht verändert. Copy/Paste.
+
+Diff 2014-2002 nicht verändert. Copy/Paste.
+
+./raster2jpeg.sh  /ch/so/agi/hoehen/2002/dtm/grid/200cm/
+./raster2jpeg.sh  /ch/so/agi/hoehen/2002/dom/grid/200cm/
+
+####./raster2jpeg.sh  /ch/so/agi/hoehen/2002/dtm/relief/200cm/
+./raster2jpeg.sh  /ch/so/agi/hoehen/2002/dom/relief/200cm/
+
+./raster2jpeg.sh  /ch/so/agi/bpav/10000/farbig/
+./raster2jpeg.sh  /ch/so/agi/bpav/5000/farbig/
+
+Basisplan schwarz-weiss nichts geändert. Copy/Paste.
+
